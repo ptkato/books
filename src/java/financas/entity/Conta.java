@@ -8,10 +8,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
-/**
- *
- * @author ciro
- */
 @NamedQueries({
     @NamedQuery(name = "Conta.listarTodas", query = "select c from Conta c order by c.titular"),
     @NamedQuery(name = "Conta.consultarPorNome",  query = "select c from Conta c where c.titular like ?1 order by c.titular")
