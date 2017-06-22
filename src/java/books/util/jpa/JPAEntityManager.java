@@ -10,11 +10,8 @@ public class JPAEntityManager {
    public static EntityManager getEntityManager() {
       if (emf == null) {
          emf = Persistence.
-<<<<<<< HEAD:src/java/books/util/jpa/JPAEntityManager.java
               createEntityManagerFactory("booksPU");
-=======
-              createEntityManagerFactory("whateverbooksPU");
->>>>>>> da4955178339fed43afa459d962f8e9acec84c9c:src/java/financas/util/jpa/JPAEntityManager.java
+
       }
       return emf.createEntityManager();
    }
