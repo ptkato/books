@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./_template.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+                xmlns:pf="http://primefaces.org/ui">
+
+    <ui:define name="content">
+        <h:form id="form">    
+            <pf:growl id="messages" showDetail="true"/>
+            <pf:dataTable value="#{contaBean.contas}" var="c"
+                          paginator="true" rows="3" paginatorPosition="top"
+                          paginatorTemplate="{CurrentPageReport} {PreviousPageLink} {NextPageLink} {RowsPerPageDropdown}"
+                          rowsPerPageTemplate="3,5,10,20" sortMode="multiple"
+                          filteredValue="#{contaBean.contasFiltradas}"
+                          editable="true">
+                <pf:ajax event="rowEdit" listener="#{contaBean.onEdit}"
+                         update=":form:messages"/>
+                <pf:ajax event="rowEditCancel" listener="#{contaBean.onCancel}"
+                         update=":form:messages"/>
+                <f:facet name="caption">Contas Cadastradas</f:facet>
+                <pf:column headerText="Titular" sortBy="#{c.titular}" 
+                           filterBy="#{c.titular}" 
+                           filterFunction="#{contaBean.consultarPorNome}">
+                    <pf:cellEditor>
+                        <f:facet name="output">
+                            <h:outputText value="#{c.titular}" style="text-align: left"/>
+                        </f:facet>
+                        <f:facet name="input">
+                            <h:inputText value="#{c.titular}"/>
+                        </f:facet>
+                    </pf:cellEditor>
+                </pf:column>
+                <pf:column headerText="Banco" sortBy="#{c.banco}">
+                    <pf:cellEditor>
+                        <f:facet name="output">
+                            <h:outputText value="#{c.banco}"/>
+                        </f:facet>
+                        <f:facet name="input">
+                            <h:inputText value="#{c.banco}"/>
+                        </f:facet>
+                    </pf:cellEditor>
+                </pf:column>
+                <pf:column headerText="Agência">
+                    <pf:cellEditor>
+                        <f:facet name="output">
+                            <h:outputText value="#{c.agencia}"/>
+                        </f:facet>
+                        <f:facet name="input">
+                            <h:inputText value="#{c.agencia}"/>
+                        </f:facet>
+                    </pf:cellEditor>
+                </pf:column>
+                <pf:column headerText="Número">
+                    <pf:cellEditor>
+                        <f:facet name="output">
+                            <h:outputText value="#{c .numero}"/>
+                        </f:facet>
+                        <f:facet name="input">
+                            <h:inputText value="#{c .numero}"/>
+                        </f:facet>
+                    </pf:cellEditor>
+                </pf:column>
+                <pf:column headerText="Editar">
+                    <pf:rowEditor/>
+                </pf:column>
+                <pf:column headerText="Movimentações">
+                    <h:commandButton value="Movimentações" action="#{contaBean.paginaMovimentacoes(c)}"/>
+                </pf:column>
+                <pf:column headerText="Excluir">
+                    <pf:commandButton icon="ui-icon-trash" alt="Excluir" 
+                                      update="@form" ajax="true"
+                                      title="Excluir" action="#{contaBean.excluir(c)}" 
+                                      onclick="return confirm('Confirma a exclusao?')"/>
+                </pf:column>
+            </pf:dataTable>
+            <h:commandButton value="Nova conta" action="#{contaBean.paginaNovaConta}"/>
+        </h:form>
+
+    </ui:define>
+
+</ui:composition>

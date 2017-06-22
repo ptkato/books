@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./_template.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="title">
+        Finanças - Nova Conta
+    </ui:define>
+
+    <ui:define name="content">
+        <h3>Nova Conta</h3>
+        <h:form>
+            <p:panelGrid columns="2">
+                Titular:
+                <h:inputText value="#{contaBean.conta.titular}"/>
+                Banco:
+                <h:inputText value="#{contaBean.conta.banco}"/>
+                Agência:
+                <h:inputText value="#{contaBean.conta.agencia}"/>
+                Número:
+                <h:inputText value="#{contaBean.conta.numero}"/>
+            </p:panelGrid>
+            <h:commandButton value="Gravar" action="#{contaBean.gravar()}"/>
+            <h:commandButton value="Voltar" action="#{contaBean.paginaInicial}" immediate="true"/>
+        </h:form>
+
+    </ui:define>
+
+</ui:composition>
