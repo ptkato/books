@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+<<<<<<< HEAD
   <persistence-unit name="booksPU" transaction-type="JTA">
     <jta-data-source>java:app/jdbc/books</jta-data-source>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
@@ -11,4 +12,12 @@
       <property name="javax.persistence.schema-generation.database.action" value="create"/>
     </properties>
   </persistence-unit>
+=======
+    <persistence-unit name="whateverbooksPU" transaction-type="JTA">
+        <jta-data-source>java:app/books</jta-data-source>
+        <properties>
+            <property name="javax.persistence.schema-generation.database.action" value="create"/>
+        </properties>
+    </persistence-unit>
+>>>>>>> da4955178339fed43afa459d962f8e9acec84c9c
 </persistence>

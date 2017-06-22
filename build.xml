@@ -7,8 +7,13 @@
 <!-- the Compile on Save feature is turned off for the project. -->
 <!-- You can turn off the Compile on Save (or Deploy on Save) setting -->
 <!-- in the project's Project Properties dialog box.-->
+<<<<<<< HEAD
 <project name="Books" default="default" basedir=".">
     <description>Builds, tests, and runs the project Books.</description>
+=======
+<project name="Financas" default="default" basedir=".">
+    <description>Builds, tests, and runs the project Financas.</description>
+>>>>>>> da4955178339fed43afa459d962f8e9acec84c9c
     <import file="nbproject/build-impl.xml"/>
     <!--
 
