@@ -1,11 +1,9 @@
-package financas.dao;
+package books.dao;
 
 import javax.persistence.EntityManager;
-import financas.util.jpa.JPAEntityManager;
-import java.sql.SQLException;
+import books.util.jpa.JPAEntityManager;
 import java.util.List;
 import javax.persistence.Query;
-import javax.transaction.TransactionRequiredException;
 
 public class DAO<T> {
 

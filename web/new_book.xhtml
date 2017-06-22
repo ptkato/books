@@ -20,12 +20,7 @@
         <h:form>
             <h:panelGrid columns="2">
                 Valor: R$ 
-                <h:inputText value="#{contaBean.movimentacao.valor}"></h:inputText>
-                Tipo:
-                <h:selectOneRadio value="#{contaBean.movimentacao.tipo}">
-                    <f:selectItem itemLabel="Entrada" itemValue="ENTRADA"/>
-                    <f:selectItem itemLabel="Saída" itemValue="SAIDA"/>
-                </h:selectOneRadio>
+                <h:inputText value="#{contaBean.book.valor}"></h:inputText>
                 Descricao:
                 <h:inputText value="#{contaBean.movimentacao.descricao}"/>
                 Data:

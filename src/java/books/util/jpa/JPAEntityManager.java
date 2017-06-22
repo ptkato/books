@@ -1,4 +1,4 @@
-package financas.util.jpa;
+package books.util.jpa;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -10,7 +10,7 @@ public class JPAEntityManager {
    public static EntityManager getEntityManager() {
       if (emf == null) {
          emf = Persistence.
-              createEntityManagerFactory("financasPU");
+              createEntityManagerFactory("booksPU");
       }
       return emf.createEntityManager();
    }

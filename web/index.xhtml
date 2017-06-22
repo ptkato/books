@@ -10,73 +10,63 @@
     <ui:define name="content">
         <h:form id="form">    
             <pf:growl id="messages" showDetail="true"/>
-            <pf:dataTable value="#{contaBean.contas}" var="c"
+            <pf:dataTable value="#{genreBean.genres}" var="g"
                           paginator="true" rows="3" paginatorPosition="top"
                           paginatorTemplate="{CurrentPageReport} {PreviousPageLink} {NextPageLink} {RowsPerPageDropdown}"
                           rowsPerPageTemplate="3,5,10,20" sortMode="multiple"
-                          filteredValue="#{contaBean.contasFiltradas}"
+                          filteredValue="#{genreBean.filterGenres}"
                           editable="true">
-                <pf:ajax event="rowEdit" listener="#{contaBean.onEdit}"
+                <pf:ajax event="rowEdit" listener="#{genreBean.onEdit}"
                          update=":form:messages"/>
-                <pf:ajax event="rowEditCancel" listener="#{contaBean.onCancel}"
+                <pf:ajax event="rowEditCancel" listener="#{genreBean.onCancel}"
                          update=":form:messages"/>
-                <f:facet name="caption">Contas Cadastradas</f:facet>
-                <pf:column headerText="Titular" sortBy="#{c.titular}" 
-                           filterBy="#{c.titular}" 
-                           filterFunction="#{contaBean.consultarPorNome}">
+                <f:facet name="caption">Generos Disponiveis</f:facet>
+                <pf:column headerText="Nome" sortBy="#{g.name}" 
+                           filterBy="#{g.name}" 
+                           filterFunction="#{genreBean.consultarPorNome}">
                     <pf:cellEditor>
                         <f:facet name="output">
-                            <h:outputText value="#{c.titular}" style="text-align: left"/>
+                            <h:outputText value="#{g.name}" style="text-align: left"/>
                         </f:facet>
                         <f:facet name="input">
-                            <h:inputText value="#{c.titular}"/>
+                            <h:inputText value="#{g.name}"/>
                         </f:facet>
                     </pf:cellEditor>
                 </pf:column>
-                <pf:column headerText="Banco" sortBy="#{c.banco}">
+                <pf:column headerText="Idade" sortBy="#{g.age}">
                     <pf:cellEditor>
                         <f:facet name="output">
-                            <h:outputText value="#{c.banco}"/>
+                            <h:outputText value="#{g.age}"/>
                         </f:facet>
                         <f:facet name="input">
-                            <h:inputText value="#{c.banco}"/>
+                            <h:inputText value="#{g.age}"/>
                         </f:facet>
                     </pf:cellEditor>
                 </pf:column>
-                <pf:column headerText="Agência">
+                <pf:column headerText="Cor">
                     <pf:cellEditor>
                         <f:facet name="output">
-                            <h:outputText value="#{c.agencia}"/>
+                            <h:outputText value="#{g.color}"/>
                         </f:facet>
                         <f:facet name="input">
-                            <h:inputText value="#{c.agencia}"/>
-                        </f:facet>
-                    </pf:cellEditor>
-                </pf:column>
-                <pf:column headerText="Número">
-                    <pf:cellEditor>
-                        <f:facet name="output">
-                            <h:outputText value="#{c .numero}"/>
-                        </f:facet>
-                        <f:facet name="input">
-                            <h:inputText value="#{c .numero}"/>
+                            <h:inputText value="#{g.color}"/>
                         </f:facet>
                     </pf:cellEditor>
                 </pf:column>
                 <pf:column headerText="Editar">
                     <pf:rowEditor/>
                 </pf:column>
-                <pf:column headerText="Movimentações">
-                    <h:commandButton value="Movimentações" action="#{contaBean.paginaMovimentacoes(c)}"/>
+                <pf:column headerText="Livros">
+                    <h:commandButton value="Livros" action="#{genreBean.booksPage(g)}"/>
                 </pf:column>
                 <pf:column headerText="Excluir">
                     <pf:commandButton icon="ui-icon-trash" alt="Excluir" 
                                       update="@form" ajax="true"
-                                      title="Excluir" action="#{contaBean.excluir(c)}" 
+                                      title="Excluir" action="#{genreBean.remove(g)}" 
                                       onclick="return confirm('Confirma a exclusao?')"/>
                 </pf:column>
             </pf:dataTable>
-            <h:commandButton value="Nova conta" action="#{contaBean.paginaNovaConta}"/>
+            <h:commandButton value="Nova genero" action="#{genreBean.newGenrePage}"/>
         </h:form>
 
     </ui:define>
